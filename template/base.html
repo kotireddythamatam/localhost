@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'navbar.css' %}">
+    <link rel="icon" href="{% static 'icon.png' %}">
+    <style media="screen">
+    </style>
+
+  </head>
+  <body>
+    <ul class="top">
+    <li><a href="/localhost/home">Home</a></li>
+    <li><a href="/localhost/python">Python</a>
+        <ul class="second">
+            <li><a href="#">Basic Python</a></li>
+            <li><a href="#">Advanced Python</a></li>
+            <li><a href="#">Programs</a></li>
+            <li><a href="#">Quiz</a></li>
+        </ul>
+    </li>
+    <li><a href="/localhost/django">Django</a>
+      <ul class="second">
+          <li><a href="#">Basic Python</a></li>
+          <li><a href="#">Advanced Python</a></li>
+          <li><a href="#">Programs</a></li>
+          <li><a href="#">Quiz</a></li>
+      </ul>
+    </li>
+    <li><a href="/localhost/restapi">RestApi</a>
+      <ul class="second">
+          <li><a href="#">Basic Python</a></li>
+          <li><a href="#">Advanced Python</a></li>
+          <li><a href="#">Programs</a></li>
+          <li><a href="#">Quiz</a></li>
+      </ul>
+    </li>
+    <li><a href="/localhost/html">HTML</a>
+      <ul class="second">
+          <li><a href="#">Basic Python</a></li>
+          <li><a href="#">Advanced Python</a></li>
+          <li><a href="#">Programs</a></li>
+          <li><a href="#">Quiz</a></li>
+      </ul>
+    </li>
+    <li><a href="/localhost/css">CSS</a>
+      <ul class="second">
+          <li><a href="#">Basic Python</a></li>
+          <li><a href="#">Advanced Python</a></li>
+          <li><a href="#">Programs</a></li>
+          <li><a href="#">Quiz</a></li>
+      </ul>
+    </li>
+    <li><a href="/localhost/js">JS</a>
+      <ul class="second">
+          <li><a href="#">Basic Python</a></li>
+          <li><a href="#">Advanced Python</a></li>
+          <li><a href="#">Programs</a></li>
+          <li><a href="#">Quiz</a></li>
+      </ul>
+    </li>
+    <li><a href="/localhost/bootstrap">Bootstrap</a>
+      <ul class="second">
+          <li><a href="#">Basic Python</a></li>
+          <li><a href="#">Advanced Python</a></li>
+          <li><a href="#">Programs</a></li>
+          <li><a href="#">Quiz</a></li>
+      </ul>
+    </li>
+    <li><a class="" href="/localhost/mysql">Mysql</a>
+      <ul class="second">
+          <li><a href="#">Basic Python</a></li>
+          <li><a href="#">Advanced Python</a></li>
+          <li><a href="#">Programs</a></li>
+          <li><a href="#">Quiz</a></li>
+      </ul>
+    </li>
+    <li><a href="/localhost/mongodb">Mongodb</a>
+      <ul class="second">
+          <li><a href="#">Basic Python</a></li>
+          <li><a href="#">Advanced Python</a></li>
+          <li><a href="#">Programs</a></li>
+          <li><a href="#">Quiz</a></li>
+      </ul>
+    </li>
+    <li><a href="/localhost/login">Login</a></li>
+    <li><a href="/localhost/signup">Signup</a></li>
+    <li><a href="/localhost/logout">Logout</a></li>
+</ul>
+
+{% block content %}
+
+{% endblock %}
+</body>
+</html>

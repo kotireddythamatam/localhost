@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Registration_Model
+from .models import Registration_Model,Profile,Student_Education_Details
 from .forms import Registration_Form
 from django.http import HttpResponse,HttpResponseRedirect
 import smtplib
@@ -16,7 +16,8 @@ def check(request):
 # @login_required
 def home(request):
     if request.session.has_key('email_id'):
-        return render(request,'home/home.html')
+        data = request.session['email_id']
+        return render(request,'home/home.html',{'status':data})
     # return render(request,'home/login.html')
     return HttpResponseRedirect('/localhost/login')
 
@@ -86,23 +87,24 @@ def signup_view(request):
             )
             model_obj.save()
             # return HttpResponse('Your registration is successfull')
-            return HttpResponseRedirect('/localhost/home')
+           return HttpResponseRedirect('/localhost/home')
         # return HttpResponse('form invalid')
         return render(request,'home/signup.html',{'form':form})
 
-def login_view(request):
+def login_view1(request):
     if request.method == "GET":
         return render(request,'home/login.html')
-    elif request.method == "POST":
+
+def login_view2(request):
+    if request.method == "GET":
         un = request.POST['e']
         pw = request.POST.get('p')
-        model_obj = Registration_Model.objects.filter(email_id = un,password = pw)
-        if model_obj:
-            request.session['email_id'] = un
-            request.session.set_expiry(600)
+        model_obj = Registration_Model.objects.get(email_id=un)
+        if model_obj.password == pw:
+            request.session['email_id'] = model_obj.status
             return HttpResponseRedirect('/localhost/home')
-        else:
-            return render(request,'home/login.html')
+        return HttpResponse('credentials are invalid')
+
 
 em = ""
 obj_id = 0
@@ -167,3 +169,35 @@ def link_to_mail(request):
         To = [em,]
         send_mail(subject,message,settings.EMAIL_HOST_USER,To,fail_silently=True)
         return HttpResponse('plese click on link')
+
+
+def profile(request,id=12):
+    if request.method == "GET":
+        model_data = Registration_Model.objects.get(id=id)
+        # form = Registration_Form(instance=model_data.id)
+        return render(request,'home/profile.html',{"form":model_data})
+    elif request.method == "POST" or request.method == "FILES":
+        p = None
+        four = None
+        try:
+            p = request.FILES.get('photo')
+            one = request.POST['coursename']
+            two = request.POST['collegename']
+            three = request.POST['percentage']
+            four = request.POST['passedoutyear']
+        except:
+            pass
+        if p != None:
+            print('p: ',p)
+            model_obj = Profile(image=p)
+            model_obj.save()
+            return HttpResponseRedirect('/localhost/profile')
+        elif four != None:
+            model_obj = Student_Education_Details(
+            course_name = one,
+            college_name = two,
+            percentage = three,
+            passedout_year = four
+            )
+            model_obj.save()
+        return HttpResponseRedirect('/localhost/profile')

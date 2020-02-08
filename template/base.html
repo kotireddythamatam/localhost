@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'navbar.css' %}"
     <link rel="icon" href="{% static 'icon.png' %}">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <style media="screen">
     </style>
 
@@ -16,14 +17,17 @@
     <li><a href="/localhost/home">Home</a></li>
     <li><a href="/localhost/python">Python</a>
         <ul class="second">
+          <li><a href="">Introduction</a></li>
             <li><a href="#">Basic Python</a></li>
             <li><a href="#">Advanced Python</a></li>
             <li><a href="#">Programs</a></li>
-            <li><a href="#">Quiz</a></li>
+            <li><a href="/localhost/iq">I.Questions</a></li>
+            <li><a href="/localhost/quiz">Quiz</a></li>
         </ul>
     </li>
     <li><a href="/localhost/django">Django</a>
       <ul class="second">
+        <li><a href="">Introduction</a></li>
           <li><a href="#">Basic Python</a></li>
           <li><a href="#">Advanced Python</a></li>
           <li><a href="#">Programs</a></li>
@@ -32,6 +36,7 @@
     </li>
     <li><a href="/localhost/restapi">RestApi</a>
       <ul class="second">
+        <li><a href="">Introduction</a></li>
           <li><a href="#">Basic Python</a></li>
           <li><a href="#">Advanced Python</a></li>
           <li><a href="#">Programs</a></li>
@@ -40,6 +45,7 @@
     </li>
     <li><a href="/localhost/html">HTML</a>
       <ul class="second">
+        <li><a href="">Introduction</a></li>
           <li><a href="#">Basic Python</a></li>
           <li><a href="#">Advanced Python</a></li>
           <li><a href="#">Programs</a></li>
@@ -48,6 +54,7 @@
     </li>
     <li><a href="/localhost/css">CSS</a>
       <ul class="second">
+        <li><a href="">Introduction</a></li>
           <li><a href="#">Basic Python</a></li>
           <li><a href="#">Advanced Python</a></li>
           <li><a href="#">Programs</a></li>
@@ -56,6 +63,7 @@
     </li>
     <li><a href="/localhost/js">JS</a>
       <ul class="second">
+        <li><a href="">Introduction</a></li>
           <li><a href="#">Basic Python</a></li>
           <li><a href="#">Advanced Python</a></li>
           <li><a href="#">Programs</a></li>
@@ -64,6 +72,7 @@
     </li>
     <li><a href="/localhost/bootstrap">Bootstrap</a>
       <ul class="second">
+        <li><a href="">Introduction</a></li>
           <li><a href="#">Basic Python</a></li>
           <li><a href="#">Advanced Python</a></li>
           <li><a href="#">Programs</a></li>
@@ -72,6 +81,7 @@
     </li>
     <li><a class="" href="/localhost/mysql">Mysql</a>
       <ul class="second">
+        <li><a href="">Introduction</a></li>
           <li><a href="#">Basic Python</a></li>
           <li><a href="#">Advanced Python</a></li>
           <li><a href="#">Programs</a></li>
@@ -80,6 +90,7 @@
     </li>
     <li><a href="/localhost/mongodb">Mongodb</a>
       <ul class="second">
+        <li><a href="">Introduction</a></li>
           <li><a href="#">Basic Python</a></li>
           <li><a href="#">Advanced Python</a></li>
           <li><a href="#">Programs</a></li>
@@ -87,10 +98,38 @@
       </ul>
     </li>
     <li><a href="/localhost/login">Login</a></li>
-    <li><a href="/localhost/signup">Signup</a></li>
-    <li><a href="/localhost/logout">Logout</a></li>
+    <li><img width="60px" height="28px" src="{% static 'icon.png' %}">
+      <ul class="second">
+        <li><a href="/localhost/profile">profile</a></li>
+        <li><a href="/localhost/logout" >Log out</a></li>
+      </ul>
+    </li>
+    <li>dummy</li>
 </ul>
 
+
+
+
+
+
+
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+  var myDropdown = document.getElementById("myDropdown");
+    if (myDropdown.classList.contains('show')) {
+      myDropdown.classList.remove('show');
+    }
+  }
+}
+</script>
 {% block content %}
 
 {% endblock %}

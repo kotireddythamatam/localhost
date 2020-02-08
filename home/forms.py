@@ -20,6 +20,7 @@ def password_check(value):
     return value
 
 class Registration_Form(forms.Form):
+    STATUS_TYPE = ((0,'user'),(1,'manager'))
     First_name=forms.CharField()
     Last_name=forms.CharField()
     Email_id = forms.EmailField()
@@ -29,6 +30,7 @@ class Registration_Form(forms.Form):
     Gender = forms.CharField()
     Age = forms.IntegerField()
     Date_of_birth = forms.DateField()
+    Status = forms.IntegerField()
     Qualification = forms.CharField()
 
     def clean_Phone_number(self):

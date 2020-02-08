@@ -3,7 +3,8 @@ from home import views
 urlpatterns = [
     path('home/',views.home),
     path('signup/',views.signup_view),
-    path('login',views.login_view),
+    path('login',views.login_view1),
+    path('login2',views.login_view2),
     path('to_mail',views.to_mail),
     path('otp_to_mail',views.otp_to_mail),
     path('change_password',views.change_password),
@@ -11,6 +12,7 @@ urlpatterns = [
     path('mongodb',views.mongodb),
     path('logout',views.logout),
     path('check',views.check),
+    path('profile',views.profile),
 
     path('django',views.django),
     path('restapi',views.restapi),

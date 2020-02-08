@@ -22,9 +22,10 @@
 .top
 {
     list-style: none;
-    padding: 0;
+    padding: 0 5px;
     margin: 0;
     width: 100%;
+    float: right;
 }
 
 .top > li
@@ -93,4 +94,13 @@ input[type=text],[type=password],[type=email],[type=number]{
 
 h2{
   text-align: center;
+}
+
+.iq{
+  background: blue;
+  margin: 1% 20%;
+}
+
+.profile{
+  margin: 1% 20%;
 }

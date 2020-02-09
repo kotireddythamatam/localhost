@@ -2,15 +2,15 @@ from django.shortcuts import render
 from .models import Python_Interview_Question_Answer,Quiz
 from django.http import HttpResponse,HttpResponseRedirect
 # Create your views here.
-def python(request):
-    return render(request,'python/python.html')
+# def python(request):
+#     return render(request,'python/python.html')
 
-def basic_python(request):
-    return render(request,'python/basic_python.html')
+# def basic_python(request):
+#     return render(request,'python/basic_python.html')
 
-def python_interview_question(request):
-    model_obj = Python_Interview_Question_Answer.objects.all()
-    return render(request,'python/iq.html',{'iq':model_obj})
+# def python_interview_question(request):
+#     model_obj = Python_Interview_Question_Answer.objects.all()
+#     return render(request,'python/iq.html',{'iq':model_obj})
 
 def python_quiz(request):
     if request.method == "GET":

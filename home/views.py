@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Registration_Model,Profile,Student_Education_Details
+from .models import Registration_Model,Profile,Student_Education_Details,Comments
 from .forms import Registration_Form
 from django.http import HttpResponse,HttpResponseRedirect
 import smtplib
@@ -17,15 +17,21 @@ def check(request):
 def home(request):
     if request.session.has_key('email_id'):
         data = request.session['email_id']
-        return render(request,'home/home.html',{'status':data})
+        comment_obj = Comments.objects.all()
+        return render(request,'home/home.html',{'comments':comment_obj})
     # return render(request,'home/login.html')
+    return HttpResponseRedirect('/localhost/login')
+
+def python(request):
+    if request.session.has_key('email_id'):
+        data = request.session['email_id']
+        return render(request,'python/python.html')
     return HttpResponseRedirect('/localhost/login')
 
 def django(request):
     if request.session.has_key('email_id'):
         return render(request,'home/django.html')
     return HttpResponseRedirect('/localhost/login')
-
 
 def restapi(request):
     if request.session.has_key('email_id'):
@@ -87,21 +93,24 @@ def signup_view(request):
             )
             model_obj.save()
             # return HttpResponse('Your registration is successfull')
-           return HttpResponseRedirect('/localhost/home')
+            return HttpResponseRedirect('/localhost/home')
         # return HttpResponse('form invalid')
         return render(request,'home/signup.html',{'form':form})
 
-def login_view1(request):
+def login_view(request):
     if request.method == "GET":
         return render(request,'home/login.html')
-
-def login_view2(request):
-    if request.method == "GET":
+    elif request.method == "POST":
+        print('one')
         un = request.POST['e']
         pw = request.POST.get('p')
+        print('two')
         model_obj = Registration_Model.objects.get(email_id=un)
+        print('three')
         if model_obj.password == pw:
+            print('four')
             request.session['email_id'] = model_obj.status
+            print('five')
             return HttpResponseRedirect('/localhost/home')
         return HttpResponse('credentials are invalid')
 
@@ -201,3 +210,44 @@ def profile(request,id=12):
             )
             model_obj.save()
         return HttpResponseRedirect('/localhost/profile')
+
+def create_comment(request):
+    comment = request.POST.get('ta')
+    user = Registration_Model.objects.get(id=1)
+    model_obj = Comments.objects.create(comment=comment,comment_category=1,user=user,like=1)
+    return HttpResponseRedirect('/localhost/home')
+
+def comment_like(request):
+    like_id = request.GET.get('id')
+    comment_obj = Comments.objects.get(id=int(like_id))
+    comment_obj.like += 1
+    comment_obj.save()
+    data={'id':like_id}
+    return HttpResponse(data)
+
+def comment_dislike(request):
+    dislike_id = request.GET.get('id')
+    comment_obj = Comments.objects.get(id=int(dislike_id))
+    comment_obj.dislike += 1
+    comment_obj.save()
+    data={'id':dislike_id}
+    return HttpResponse(data)
+
+def reply_comment(request):
+    reply = request.GET.get('r')
+    pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

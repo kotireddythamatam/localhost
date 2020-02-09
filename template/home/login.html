@@ -4,28 +4,12 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <div class="login_form">
   <h2>Login Page</h2><br>
-<form id="form_js">
+<form action="" method="post">
   {% csrf_token %}
-  <input type="email" id="e" size="30%" placeholder="Enter Your Email Id"><br><br>
-  <input type="password" id="p" placeholder="Enter Your Password" size="30%"><br><br>
+  <input type="email" name="e" size="30%" placeholder="Enter Your Email Id"><br><br>
+  <input type="password" name="p" placeholder="Enter Your Password" size="30%"><br><br>
   <input type="submit" value="Login"><br><br>
   <a href="/localhost/to_mail">Forgot password?</a>
 </form>
 </div>
-<script type="text/javascript">
-$('#form_js').submit(function (e) {
-            e.preventDefault();
-            $.ajax({
-                url: "asas",
-                type: 'POST',
-                data:{
-                  e:$('#e').val(),
-                  p:$('#p').val()
-                }
-                success: function (result) {
-                },
-            });
-        });
-
-</script>
 {% endblock %}
